@@ -13382,7 +13382,16 @@ percentage of human faces detected in dog files is 11
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question 2:</strong> This algorithmic choice necessitates that we communicate to the user that we accept human images only when they provide a clear view of a face (otherwise, we risk having unneccessarily frustrated users!). In your opinion, is this a reasonable expectation to pose on the user? If not, can you think of a way to detect humans in images that does not necessitate an image with a clearly presented face?</p>
-<p><strong>Answer:</strong></p>
+<p><strong>Answer:</strong> This is not a reasonable expectation to pose on the user. Our algorithm should not alert the user to input human images only. Our algoritm should automatically predict whether the given image is a human face or not? To achieve this, we can use the following technique.</p>
+<p>As we know most human faces are made of similar features (I mean, eyes, nose, lips etc etc) of same/different sizes, and added together in different amounts. So we can use any dimension reduction techniques like principal component analysys on a large set of images with human faces to find out the patterns of those features. So when a new image is fed to the system then it can easily find out that image is human face or something different.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>We suggest the face detector from OpenCV as a potential way to detect human images in your algorithm, but you are free to explore other approaches, especially approaches that make use of deep learning :).  Please use the code cell below to design and test your own face detection algorithm.  If you decide to pursue this <em>optional</em> task, report performance on each of the datasets.</p>
 
 </div>
@@ -14408,6 +14417,23 @@ _________________________________________________________________
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Reasoning-for-why-this-architecture-is-suitable-for-the-current-problem">Reasoning for why this architecture is suitable for the current problem<a class="anchor-link" href="#Reasoning-for-why-this-architecture-is-suitable-for-the-current-problem">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The current problem of identifying images and providing an output of 133 different breeds of dogs has many features to extract from the training data. This is the reason I have used three different convolutional layers with 16, 32 and 64 filters to extract dog features/pattern from the data. As our target class has 133 labels, we need to have more than one convolution layers to make our model more predictive in nature. And after finding the patterns from the data I have used two pooling layers (max pooling and average pooling layers consecutively) to reduce data dimension and computational complexity. So I think my architecture takes care of all the requirements of a model to become more accurate while classifying the images into 133 different labels. And that is why, this architecture is suitable for the current problem.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="(IMPLEMENTATION)-Compile-the-Model">(IMPLEMENTATION) Compile the Model<a class="anchor-link" href="#(IMPLEMENTATION)-Compile-the-Model">&#182;</a></h3>
 </div>
 </div>
@@ -14685,6 +14711,15 @@ Epoch 5/5
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>Hello, human!</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p><img src="Aaron_Eckhart_0001.jpg" alt="title"></p>
 
 </div>
@@ -14729,6 +14764,15 @@ Epoch 5/5
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Example-2">Example 2<a class="anchor-link" href="#Example-2">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Hello, dog!</p>
+
 </div>
 </div>
 </div>
@@ -14784,6 +14828,15 @@ Epoch 5/5
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>Hello, human!</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p><img src="Tab_Baldwin_0001.jpg" alt="title"></p>
 
 </div>
@@ -14825,6 +14878,15 @@ Epoch 5/5
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Example-4">Example 4<a class="anchor-link" href="#Example-4">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Hello, human!</p>
+
 </div>
 </div>
 </div>
@@ -14880,6 +14942,15 @@ Epoch 5/5
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>Hello, dog!</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p><img src="Bulldog_02807.jpg" alt="title"></p>
 
 </div>
@@ -14921,6 +14992,15 @@ Epoch 5/5
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Example-6">Example 6<a class="anchor-link" href="#Example-6">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Hello, dog!</p>
+
 </div>
 </div>
 </div>
